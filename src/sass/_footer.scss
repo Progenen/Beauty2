@@ -1,0 +1,25 @@
+.footer {
+    font-family: Futurica;
+    font-size: 16px;
+    text-transform: uppercase;
+    padding: 12px 0;
+    position: relative;
+    background-color: #fff;
+    &__row {
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__left {
+        max-width: 315px;
+        width: 100%;
+        margin-right: 15px;
+    }
+
+    &__right a{
+        text-decoration: none;
+        color: $color1;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

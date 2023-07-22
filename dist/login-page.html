@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.min.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="content">
+            <header class="header">
+                <div class="container">
+                    <div class="header__row row">
+                        <div class="header__col header__col--menu">
+                            <div class="header__menu">
+                                <ul class="header__list header__menu-list">
+                                    <li class="header__menu-item header__list-item"><a href="index.html#advantages" class="header__menu-link header__list-link">ПРЕИМУЩЕСТВА</a></li>
+                                    <li class="header__menu-item header__list-item"><a href="index.html#howWork" class="header__menu-link header__list-link">О СЕРВИСЕ</a></li>
+                                    <li class="header__menu-item header__list-item"><a href="index.html#price" class="header__menu-link header__list-link">ТАРИФЫ</a></li>
+                                    <li class="header__menu-item header__list-item"><a href="index.html#reviews" class="header__menu-link header__list-link">ОТЗЫВЫ</a></li>
+                                    <li class="header__menu-item header__list-item"><a href="index.html#contacts" class="header__menu-link header__list-link">КОНТАКТЫ</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="header__col header__col--cab">
+                            <ul class="header__list header__cab-list">
+                                <li class="header__cab-item header__list-item"><a href="index.html#access" class="header__cab-link header__list-link">ПОЛУЧИТЬ ДОСТУП</a></li>
+                                <li class="header__cab-item header__list-item"><a href="login-page.html" class="header__cab-link header__list-link">ВОЙТИ</a></li>
+                            </ul>
+                        </div>
+                        <div class="header__col header__col--burger" tabindex="0">
+                            <div class="header__burger">
+                                <span></span><span></span><span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <main class="main">
+                <div class="modal modal-form">
+                    <form class="login__form form form-validate" action="">
+                        <div class="login__input-wrap form__input-wrap">
+                            <div class="login__label form__error"></div>
+                            <div class="login__form-input question__form-input form__input">
+                                <div class="form__input-icon">
+                                    <img src="images/icons/access/access3.png" alt="">
+                                </div>
+                                <input type="email" name="email" placeholder="E-MAIL" required>
+                            </div>
+                        </div>
+                        <div class="login__input-wrap form__input-wrap">
+                            <div class="login__label form__error"></div>
+                            <div class="login__form-input question__form-input form__input">
+                                <div class="form__input-icon">
+                                    <img src="images/icons/access/access5.png" alt="">
+                                </div>
+                                <input type="password" name="password" placeholder="ПАРОЛЬ" required>
+                            </div>
+                        </div>
+                        <div class="login__form-checkbox login__form-input questions__form-checkbox form__checkbox">
+                            <input type="checkbox" name="agreePersonal" required>
+                            <span>ДАЮ <a href="#">СОГЛАСИЕ НА ОБРАБОТКУ СВОИХ ПЕРСОНАЛЬНЫХ ДАННЫХ</a></span>
+                        </div>
+                        <div class="login__bottom">
+                            <div class="login__form-checkbox login__form-input questions__form-checkbox form__checkbox">
+                                <input type="checkbox">
+                                <span>ЗАПОМНИТЬ МЕНЯ</span>
+                            </div>
+                            <a href="recovery-page.html" class="login__forget">ЗАБЫЛИ ПАРОЛЬ?</a>
+                        </div>
+                        <button class="login__btn form__btn btn" type="submit">
+                            вход
+                        </button>
+                    </form>
+                </div>
+            </main>
+        </div>
+        <footer class="footer">
+            <div class="container">
+                <div class="footer__row row">
+                    <div class="footer__left">
+                        2023© ООО “БЬЮТИ ТЕХНОЛОДЖИ”
+                        ИНН 3257085668, ОГРН 1233200000582
+                    </div>
+                    <div class="footer__right">
+                        <a href="#">ПОЛИТИКА ОБРАБОТКИ ПЕРСОНАЛЬНЫХ ДАННЫХ</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <div class="cookies-alert dialog">
+        <p class="cookies-alert__text dialog__text">
+            ЭТОТ САЙТ ИСПОЛЬЗУЕТ COOKIE ДЛЯ ХРАНЕНИЯ ДАННЫХ. ПРОДОЛЖАЯ ИСПОЛЬЗОВАТЬ САЙТ, ВЫ ДАЕТЕ СОГЛАСИЕ НА РАБОТУ С ЭТИМИ ФАЙЛАМИ.
+        </p>
+        <button class="cookies-alert__btn dialog__btn btn">
+            ПРИНЯТЬ И ЗАКРЫТЬ
+        </button>
+    </div>
+    <script src="JS/bundle.js"></script>
+</body>
+
+</html>
