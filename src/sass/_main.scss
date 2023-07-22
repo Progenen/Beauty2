@@ -5,10 +5,11 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    padding: 31px 0;
+    padding: 29px 0 31px;
     &__title {
         text-align: center;
         margin: 0;
+        margin-bottom: -2px;
         img {
             max-width: 313px;
             width: 100%;
@@ -17,7 +18,7 @@
 
     &__subtitle {
         display: block;
-        margin: 0 auto rem(28) auto;
+        margin: 0 auto rem(20) auto;
         color: #535362;
         font-family: "Myraid Pro";
         font-size: rem(32);
@@ -33,6 +34,17 @@
 
     &__row {
         display: flex;
+        position: relative;
+        justify-content: center;
+        max-width: 947px;
+        &::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            background-color: #000;
+        }
     }
 
     &__left {
@@ -40,6 +52,7 @@
         img {
             max-width: 552px;
             width: 100%;
+            height: 100%;
         }
     }
 
@@ -65,13 +78,14 @@
         line-height: rem(50.4);
         border-radius: 7px;
         margin-bottom: rem(32);
+        border: 1px solid #CACAD9;
         &:last-child {
             margin-bottom: 0;
         }
     }
 
     &__discount {
-        margin-top: rem(31);
+        margin-top: rem(25);
         font-family: 'A Avante Bs';
         background-image: linear-gradient(to bottom, #feec01 0%, #feec01 18%, #ffc327 100%);
         box-shadow: 0 0 7px 3px rgba(255, 255, 255, 0.4);
@@ -88,6 +102,7 @@
         margin-left: auto;
         margin-right: auto;
         box-sizing: initial;
+        border-color: transparent;
         text-decoration: none;
     }
 }

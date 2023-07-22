@@ -34,9 +34,9 @@ a {
 }
 
 .container {
-    max-width: 978px;
+    max-width: 985px;
     width: 100%;
-    padding: 0 15px;
+    padding: 0 5px;
     margin: 0 auto;
 }
 
@@ -48,11 +48,12 @@ a {
 .title {
     
     font-family: 'A Avante Bs';
-    font-size: rem(96);
+    font-size: rem(92);
     line-height: rem(115);
     font-weight: 400;
     letter-spacing: -0.001em;
     margin-top: 0;
+    margin-left: 0;
     margin-bottom: 10px;
     text-align: center;
     color: #004040;
