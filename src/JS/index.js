@@ -1,10 +1,22 @@
-function validInput (input, res, selector, errors) {
+function validInput (input, res, selector, max = 99999, min = 1, errors) {
     input.addEventListener("input", () => {
         if (input.value === res) {
             input.parentElement.parentElement.querySelector(".form__error").style.display="block";
             input.parentElement.parentElement.querySelector(".form__error").textContent = errors[0];
             input.parentElement.classList.add("form__input-invalid");
             selector.classList.add("disabled");
+        } else if (input.value.length > max) {
+            input.parentElement.parentElement.querySelector(".form__error").style.display="block";
+            input.parentElement.parentElement.querySelector(".form__error").textContent = `Поле не должно превышать ${max} символов`;
+            input.parentElement.classList.add("form__input-invalid");
+            selector.classList.add("disabled");
+
+        } else if (input.value.length < min) {
+            input.parentElement.parentElement.querySelector(".form__error").style.display="block";
+            input.parentElement.parentElement.querySelector(".form__error").textContent = `Поле должно состоять минимум из ${min} символов`;
+            input.parentElement.classList.add("form__input-invalid");
+            selector.classList.add("disabled");
+
         } else {
             input.parentElement.parentElement.querySelector(".form__error").style.display="none";
             input.parentElement.classList.remove("form__input-invalid");
@@ -15,11 +27,17 @@ function validInput (input, res, selector, errors) {
 function validEmail(input, selector, errors) {
     input.addEventListener("input", () => {
         if (input.value.indexOf("@") === -1) {
-            console.log(input.parentElement.parentElement)
             input.parentElement.parentElement.querySelector(".form__error").style.display="block";
             input.parentElement.parentElement.querySelector(".form__error").textContent = errors[1];
             input.parentElement.classList.add("form__input-invalid");
             selector.classList.add("disabled");
+        } else if (!input.value.match(/^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu)) {
+            console.log("ok");
+            input.parentElement.parentElement.querySelector(".form__error").style.display="block";
+            input.parentElement.parentElement.querySelector(".form__error").textContent = errors[1];
+            input.parentElement.classList.add("form__input-invalid");
+            selector.classList.add("disabled"); 
+
         } else {
             input.parentElement.parentElement.querySelector(".form__error").style.display="none";
             input.parentElement.classList.remove("form__input-invalid");
@@ -54,6 +72,36 @@ function passValid (input, inputConf, selector, errors) {
             input.parentElement.parentElement.querySelector(".form__error").textContent = errors[0];
             input.parentElement.classList.add("form__input-invalid");
             selector.classList.add("disabled");
+        } else if (!input.value.match(/(?=.*[a-z])/g)) {
+            input.parentElement.parentElement.querySelector(".form__error").style.display="block";
+            input.parentElement.parentElement.querySelector(".form__error").textContent = "Пароль должен содержать минимум одну букву в нижнем регистре";
+            input.parentElement.classList.add("form__input-invalid");
+            selector.classList.add("disabled");
+
+        } else if (!input.value.match(/^[A-Za-z0-9!@#$%^&*]+$/)) {
+            input.parentElement.parentElement.querySelector(".form__error").style.display="block";
+            input.parentElement.parentElement.querySelector(".form__error").textContent = "Пароль должен содержать только латинские буквы и цифры";
+            input.parentElement.classList.add("form__input-invalid");
+            selector.classList.add("disabled");
+
+        } else if (!input.value.match(/(?=.*[A-Z])/g)) {
+            input.parentElement.parentElement.querySelector(".form__error").style.display="block";
+            input.parentElement.parentElement.querySelector(".form__error").textContent = "Пароль должен содержать минимум одну букву в верхнем регистре";
+            input.parentElement.classList.add("form__input-invalid");
+            selector.classList.add("disabled");
+
+        } else if (!input.value.match(/(?=.*[0-9])/g)) {
+            input.parentElement.parentElement.querySelector(".form__error").style.display="block";
+            input.parentElement.parentElement.querySelector(".form__error").textContent = "Пароль должен содержать цифры";
+            input.parentElement.classList.add("form__input-invalid");
+            selector.classList.add("disabled");
+
+        } else if (input.value < min) {
+            input.parentElement.parentElement.querySelector(".form__error").style.display="block";
+            input.parentElement.parentElement.querySelector(".form__error").textContent = "Пароль должен содержать не менее 8 символов";
+            input.parentElement.classList.add("form__input-invalid");
+            selector.classList.add("disabled");
+
         } else if (inputConf.value !== input.value || input.value !== inputConf.value) {
             input.parentElement.parentElement.querySelector(".form__error").style.display="block";
             input.parentElement.parentElement.querySelector(".form__error").textContent = errors[3];
@@ -68,8 +116,29 @@ function passValid (input, inputConf, selector, errors) {
     })
 }
 
-function validPhone(input, res, selector, errors) {
+function validPhone(input, res, selector, min = 10, errors) {
     input.addEventListener("input", () => {
+        if (input.value === res) {
+            input.parentElement.parentElement.querySelector(".form__error").style.display="block";
+            input.parentElement.parentElement.querySelector(".form__error").textContent = errors[0];
+            input.parentElement.classList.add("form__input-invalid");
+            selector.classList.add("disabled");
+        } else if (input.value.length < min) {
+            input.parentElement.parentElement.querySelector(".form__error").style.display="block";
+            input.parentElement.parentElement.querySelector(".form__error").textContent = `Поле должно состоять минимум из ${min} символов`;
+            input.parentElement.classList.add("form__input-invalid");
+            selector.classList.add("disabled");
+        } else {
+            input.parentElement.parentElement.querySelector(".form__error").style.display="none";
+            input.parentElement.classList.remove("form__input-invalid");
+        }
+    })
+
+}
+
+function validNum(input, res, selector, max = 20, min = 10, errors) {
+    input.addEventListener("input", () => {
+        console.log(input.value.length);
         if (input.value === res) {
             input.parentElement.parentElement.querySelector(".form__error").style.display="block";
             input.parentElement.parentElement.querySelector(".form__error").textContent = errors[0];
@@ -80,6 +149,19 @@ function validPhone(input, res, selector, errors) {
             input.parentElement.parentElement.querySelector(".form__error").textContent = errors[4];
             input.parentElement.classList.add("form__input-invalid");
             selector.classList.add("disabled");
+        } else if (input.value.length < min) {
+            console.log('ok');
+            input.parentElement.parentElement.querySelector(".form__error").style.display="block";
+            input.parentElement.parentElement.querySelector(".form__error").textContent = `Поле должно состоять минимум из ${min} символов`;
+            input.parentElement.classList.add("form__input-invalid");
+            selector.classList.add("disabled");
+
+        } else if (input.value.length > max) {
+            input.parentElement.parentElement.querySelector(".form__error").style.display="block";
+            input.parentElement.parentElement.querySelector(".form__error").textContent = `Поле не должно превышать ${max} символов`;
+            input.parentElement.classList.add("form__input-invalid");
+            selector.classList.add("disabled");
+
         } else {
             input.parentElement.parentElement.querySelector(".form__error").style.display="none";
             input.parentElement.classList.remove("form__input-invalid");
@@ -100,12 +182,51 @@ function validCheckbox(input, res, selector) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+    // phone mask
+    [].forEach.call( document.querySelectorAll('[name="phone"]'), function(input) {
+        var keyCode;
+        function mask(event) {
+          event.keyCode && (keyCode = event.keyCode);
+          var pos = this.selectionStart;
+          if (pos < 3) event.preventDefault();
+          var matrix = "+7 (___) ___ ____",
+              i = 0,
+              def = matrix.replace(/\D/g, ""),
+              val = this.value.replace(/\D/g, ""),
+              new_value = matrix.replace(/[_\d]/g, function(a) {
+                  return i < val.length ? val.charAt(i++) : a
+              });
+          i = new_value.indexOf("_");
+          if (i != -1) {
+              i < 5 && (i = 3);
+              new_value = new_value.slice(0, i)
+          }
+          var reg = matrix.substr(0, this.value.length).replace(/_+/g,
+              function(a) {
+                  return "\\d{1," + a.length + "}"
+              }).replace(/[+()]/g, "\\$&");
+          reg = new RegExp("^" + reg + "$");
+          if (!reg.test(this.value) || this.value.length < 5 || keyCode > 47 && keyCode < 58) {
+            this.value = new_value;
+          }
+          if (event.type == "blur" && this.value.length < 5) {
+            this.value = "";
+          }
+        }
+    
+        input.addEventListener("input", mask, false);
+        input.addEventListener("focus", mask, false);
+        input.addEventListener("blur", mask, false);
+        input.addEventListener("keydown", mask, false);
+    
+      });
 
     const burger = document.querySelector(".header__burger");
     const menuItem = document.querySelectorAll(".header__menu-item");
     const menu = document.querySelector(".header__menu");
     const cookiesAlert = document.querySelector(".cookies-alert");
     const cookiesAlertClose = document.querySelector(".cookies-alert__btn");
+    const popLoad = document.querySelector(".popup-load");
     let errors = ['Поле не заполнено', "ВВЕДИТЕ ВАШ E-MAIL В ПРАВИЛЬНОМ ФОРМАТЕ.", "Некорректный ИИН", "Пароли должны совпадать", "Некорректное значение"];
 
     if (document.querySelector(".access__form")) {
@@ -123,10 +244,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         btn.classList.add("disabled");
 
-        validInput(inputName, '', btn, errors);
-        validPhone(inputIin, '', btn, errors);
+        validInput(inputName, '', btn, 10, errors);
+        validNum(inputIin, '', btn, 12, 10, errors);
         validEmail(inputEmail, btn, errors);
-        validPhone(inputPhone, '', btn, errors);
+        validPhone(inputPhone, '', btn, 10, errors);
         passValid(inputPass, inputConfirmPass, btn, errors);
         validInput(inputConfirmPass, '', btn, errors);
         validCheckbox(inputOfert, false, btn);
@@ -233,9 +354,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const inputMessage = qForm.querySelector('[name="message"]');
         const btn = qForm.querySelector("[type='submit']");
 
-        validInput(inputName, '', btn, errors);
+        validInput(inputName, '', btn, 150, errors);
         validEmail(inputEmali, btn, errors);
-        validInput(inputMessage, '', btn, errors);
+        validInput(inputMessage, '', btn, 9999, 30, errors);
         validCheckbox(inputPersonal, false, btn);
 
         inputsAll.forEach(el => {
@@ -280,6 +401,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 inputMessage.parentElement.parentElement.querySelector(".form__error").style.display="block";
                 inputMessage.parentElement.parentElement.querySelector(".form__error").textContent = errors[0];
             }
+
+            if (!btn.classList.contains("disabled")) {
+                popLoad.classList.add("show");
+            }
+        });
+
+        qForm.addEventListener('submit', (e)=> {
+            e.preventDefault();
         })
 
     }
@@ -402,6 +531,14 @@ document.addEventListener('DOMContentLoaded', function () {
             if (loginPersonal.checked === false) {
                 loginPersonal.parentElement.classList.add("form__input-invalid");
             }
+
+            if (!btn.classList.contains("disabled")) {
+                popLoad.classList.add("show")
+            }
+        });
+
+        login.addEventListener('submit', (e)=> {
+            e.preventDefault();
         })
     }
 
