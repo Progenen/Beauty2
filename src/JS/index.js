@@ -404,6 +404,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (!btn.classList.contains("disabled")) {
                 popLoad.classList.add("show");
+                document.body.classList.add("lock");
             }
         });
 
@@ -533,7 +534,8 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             if (!btn.classList.contains("disabled")) {
-                popLoad.classList.add("show")
+                popLoad.classList.add("show");
+                document.body.classList.add("lock");
             }
         });
 
