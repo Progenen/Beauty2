@@ -116,13 +116,19 @@ function passValid (input, inputConf, selector, errors) {
     })
 }
 
-function validPhone(input, res, selector, min = 10, errors) {
+function validPhone(input, res, selector, min = 0, errors) {
     input.addEventListener("input", () => {
         if (input.value === res) {
             input.parentElement.parentElement.querySelector(".form__error").style.display="block";
             input.parentElement.parentElement.querySelector(".form__error").textContent = errors[0];
             input.parentElement.classList.add("form__input-invalid");
             selector.classList.add("disabled");
+        } else if (input.value.indexOf('_') != -1) {
+            input.parentElement.parentElement.querySelector(".form__error").style.display="block";
+            input.parentElement.parentElement.querySelector(".form__error").textContent = `Поле не заполнено`;
+            input.parentElement.classList.add("form__input-invalid");
+            selector.classList.add("disabled");
+
         } else if (input.value.length < min) {
             input.parentElement.parentElement.querySelector(".form__error").style.display="block";
             input.parentElement.parentElement.querySelector(".form__error").textContent = `Поле должно состоять минимум из ${min} символов`;
@@ -185,7 +191,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // phone mask
     var phones = document.querySelectorAll('[name="phone"]');
     var phoheMaskOptions = {
-        mask: '8(000)000-00-00',
+        mask: '+7 (000) 000-00-00',
         lazy: false
     } 
 
@@ -219,7 +225,7 @@ document.addEventListener('DOMContentLoaded', function () {
         validInput(inputName, '', btn, 10, errors);
         validNum(inputIin, '', btn, 12, 10, errors);
         validEmail(inputEmail, btn, errors);
-        validPhone(inputPhone, '', btn, 10, errors);
+        validPhone(inputPhone, '', btn, 0, errors);
         passValid(inputPass, inputConfirmPass, btn, errors);
         validInput(inputConfirmPass, '', btn, errors);
         validCheckbox(inputOfert, false, btn);
@@ -293,7 +299,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 inputEmail.parentElement.parentElement.querySelector(".form__error").style.display="block";
                 inputEmail.parentElement.parentElement.querySelector(".form__error").textContent = errors[0];
             }
-            if (inputPhone.value === '') {
+            if (inputPhone.value === '' || inputPhone.value.indexOf('_')) {
+                console.log(inputPhone.value);
                 inputPhone.parentElement.classList.add("form__input-invalid");
                 inputPhone.parentElement.parentElement.querySelector(".form__error").style.display="block";
                 inputPhone.parentElement.parentElement.querySelector(".form__error").textContent = errors[0];
