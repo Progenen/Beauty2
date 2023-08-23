@@ -45,7 +45,7 @@ function validEmail(input, selector, errors) {
     })
 }
 
-function passValid (input, inputConf, selector, errors) {
+function passValid (input, inputConf,selector, min=0, errors) {
     inputConf.addEventListener("input", () => {
         console.log(inputConf.value + ' ' + input.value);
         if (inputConf.value === '') {
@@ -226,7 +226,7 @@ document.addEventListener('DOMContentLoaded', function () {
         validNum(inputIin, '', btn, 12, 10, errors);
         validEmail(inputEmail, btn, errors);
         validPhone(inputPhone, '', btn, 0, errors);
-        passValid(inputPass, inputConfirmPass, btn, errors);
+        passValid(inputPass, inputConfirmPass, btn, 8, errors);
         validInput(inputConfirmPass, '', btn, errors);
         validCheckbox(inputOfert, false, btn);
         validCheckbox(inputPersonal, false, btn);
