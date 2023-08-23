@@ -64,7 +64,7 @@ function passValid (input, inputConf,selector, min=0, errors) {
             inputConf.parentElement.parentElement.querySelector(".form__error").style.display="none";
             inputConf.parentElement.classList.remove("form__input-invalid");
         }
-    })
+    });
     input.addEventListener("input", () => {
         console.log(inputConf.value + ' ' + input.value);
         if (input.value === '') {
@@ -96,7 +96,7 @@ function passValid (input, inputConf,selector, min=0, errors) {
             input.parentElement.classList.add("form__input-invalid");
             selector.classList.add("disabled");
 
-        } else if (input.value < min) {
+        } else if (input.value.length < min) {
             input.parentElement.parentElement.querySelector(".form__error").style.display="block";
             input.parentElement.parentElement.querySelector(".form__error").textContent = "Пароль должен содержать не менее 8 символов";
             input.parentElement.classList.add("form__input-invalid");
