@@ -72,15 +72,15 @@ function passValid (input, inputConf,selector, min=0, errors) {
             input.parentElement.parentElement.querySelector(".form__error").textContent = errors[0];
             input.parentElement.classList.add("form__input-invalid");
             selector.classList.add("disabled");
-        } else if (!input.value.match(/(?=.*[a-z])/g)) {
-            input.parentElement.parentElement.querySelector(".form__error").style.display="block";
-            input.parentElement.parentElement.querySelector(".form__error").textContent = "Пароль должен содержать минимум одну букву в нижнем регистре";
-            input.parentElement.classList.add("form__input-invalid");
-            selector.classList.add("disabled");
-
         } else if (!input.value.match(/^[A-Za-z0-9!@#$%^&*]+$/)) {
             input.parentElement.parentElement.querySelector(".form__error").style.display="block";
             input.parentElement.parentElement.querySelector(".form__error").textContent = "Пароль должен содержать только латинские буквы и цифры";
+            input.parentElement.classList.add("form__input-invalid");
+            selector.classList.add("disabled");
+
+        } else if (!input.value.match(/(?=.*[a-z])/g)) {
+            input.parentElement.parentElement.querySelector(".form__error").style.display="block";
+            input.parentElement.parentElement.querySelector(".form__error").textContent = "Пароль должен содержать минимум одну букву в нижнем регистре";
             input.parentElement.classList.add("form__input-invalid");
             selector.classList.add("disabled");
 
